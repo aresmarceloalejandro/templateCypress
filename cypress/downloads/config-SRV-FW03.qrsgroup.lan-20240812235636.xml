@@ -1,0 +1,2343 @@
+<?xml version="1.0"?>
+<pfsense>
+	<version>23.3</version>
+	<lastchange></lastchange>
+	<system>
+		<optimization>normal</optimization>
+		<hostname>SRV-FW03</hostname>
+		<domain>qrsgroup.lan</domain>
+		<dnsserver>192.168.1.207</dnsserver>
+		<dnsserver>192.168.1.214</dnsserver>
+		<group>
+			<name>all</name>
+			<description><![CDATA[All Users]]></description>
+			<scope>system</scope>
+			<gid>1998</gid>
+			<member>0</member>
+		</group>
+		<group>
+			<name>admins</name>
+			<description><![CDATA[System Administrators]]></description>
+			<scope>system</scope>
+			<gid>1999</gid>
+			<member>0</member>
+			<priv>page-all</priv>
+		</group>
+		<user>
+			<name>admin</name>
+			<descr><![CDATA[System Administrator]]></descr>
+			<scope>system</scope>
+			<groupname>admins</groupname>
+			<sha512-hash>$6$653ec6c617734597$3tvH2kC4Oej/UyOIjtED1i4WRbewbiIRT6NmBJiSrCGS8do1rKCC.5bqQEXrKLxvLKjTLL3Sk6fdYGgbAKnWP.</sha512-hash>
+			<uid>0</uid>
+			<priv>user-shell-access</priv>
+		</user>
+		<nextuid>2000</nextuid>
+		<nextgid>2000</nextgid>
+		<timeservers>2.pfsense.pool.ntp.org</timeservers>
+		<webgui>
+			<protocol>http</protocol>
+			<loginautocomplete></loginautocomplete>
+			<ssl-certref>6218dd25a1153</ssl-certref>
+			<althostnames></althostnames>
+			<dashboardcolumns>2</dashboardcolumns>
+		</webgui>
+		<disablenatreflection>yes</disablenatreflection>
+		<disablesegmentationoffloading></disablesegmentationoffloading>
+		<disablelargereceiveoffloading></disablelargereceiveoffloading>
+		<ipv6allow></ipv6allow>
+		<maximumtableentries>400000</maximumtableentries>
+		<powerd_ac_mode>hadp</powerd_ac_mode>
+		<powerd_battery_mode>hadp</powerd_battery_mode>
+		<powerd_normal_mode>hadp</powerd_normal_mode>
+		<bogons>
+			<interval>monthly</interval>
+		</bogons>
+		<hn_altq_enable></hn_altq_enable>
+		<ssh></ssh>
+		<timezone>Etc/GMT-3</timezone>
+		<authserver>
+			<type>ldap</type>
+			<refid>627186b74e077</refid>
+			<name>QRS AD</name>
+			<host>192.168.1.214</host>
+			<ldap_port>389</ldap_port>
+			<ldap_urltype>Standard TCP</ldap_urltype>
+			<ldap_caref>global</ldap_caref>
+			<ldap_protver>3</ldap_protver>
+			<ldap_timeout>25</ldap_timeout>
+			<ldap_scope>subtree</ldap_scope>
+			<ldap_basedn><![CDATA[OU=Presidencia,OU=Users_QRS,DC=qrsgroup,DC=lan]]></ldap_basedn>
+			<ldap_authcn><![CDATA[OU=Presidencia,OU=Users_QRS,DC=qrsgroup,DC=lan]]></ldap_authcn>
+			<ldap_extended_query></ldap_extended_query>
+			<ldap_binddn><![CDATA[cn=usr_ldap,ou=Servicios,ou=Users_QRS,dc=qrsgroup,dc=lan]]></ldap_binddn>
+			<ldap_bindpw><![CDATA[usr_ldap_2021]]></ldap_bindpw>
+			<ldap_attr_user><![CDATA[samAccountName]]></ldap_attr_user>
+			<ldap_attr_member><![CDATA[member]]></ldap_attr_member>
+			<ldap_attr_group><![CDATA[cn]]></ldap_attr_group>
+			<ldap_attr_groupobj><![CDATA[posixGroup]]></ldap_attr_groupobj>
+			<ldap_extended_enabled></ldap_extended_enabled>
+			<ldap_pam_groupdn></ldap_pam_groupdn>
+		</authserver>
+		<already_run_config_upgrade></already_run_config_upgrade>
+	</system>
+	<interfaces>
+		<wan>
+			<if>em0</if>
+			<blockpriv></blockpriv>
+			<blockbogons></blockbogons>
+			<descr><![CDATA[METROTEL]]></descr>
+			<spoofmac></spoofmac>
+			<enable></enable>
+			<ipaddr>190.111.245.27</ipaddr>
+			<subnet>24</subnet>
+			<gateway>WANGW</gateway>
+		</wan>
+		<lan>
+			<enable></enable>
+			<if>em1</if>
+			<ipaddr>192.168.1.235</ipaddr>
+			<subnet>24</subnet>
+			<ipaddrv6></ipaddrv6>
+			<subnetv6></subnetv6>
+			<media></media>
+			<mediaopt></mediaopt>
+			<track6-interface>wan</track6-interface>
+			<track6-prefix-id>0</track6-prefix-id>
+			<gateway></gateway>
+			<gatewayv6></gatewayv6>
+		</lan>
+		<opt1>
+			<descr><![CDATA[TELECOM]]></descr>
+			<if>em2</if>
+			<spoofmac></spoofmac>
+			<blockpriv></blockpriv>
+			<blockbogons></blockbogons>
+			<alias-address></alias-address>
+			<alias-subnet>32</alias-subnet>
+			<enable></enable>
+			<ipaddr>dhcp</ipaddr>
+			<dhcphostname></dhcphostname>
+			<dhcprejectfrom></dhcprejectfrom>
+			<adv_dhcp_pt_timeout></adv_dhcp_pt_timeout>
+			<adv_dhcp_pt_retry></adv_dhcp_pt_retry>
+			<adv_dhcp_pt_select_timeout></adv_dhcp_pt_select_timeout>
+			<adv_dhcp_pt_reboot></adv_dhcp_pt_reboot>
+			<adv_dhcp_pt_backoff_cutoff></adv_dhcp_pt_backoff_cutoff>
+			<adv_dhcp_pt_initial_interval></adv_dhcp_pt_initial_interval>
+			<adv_dhcp_pt_values>SavedCfg</adv_dhcp_pt_values>
+			<adv_dhcp_send_options></adv_dhcp_send_options>
+			<adv_dhcp_request_options></adv_dhcp_request_options>
+			<adv_dhcp_required_options></adv_dhcp_required_options>
+			<adv_dhcp_option_modifiers></adv_dhcp_option_modifiers>
+			<adv_dhcp_config_advanced></adv_dhcp_config_advanced>
+			<adv_dhcp_config_file_override></adv_dhcp_config_file_override>
+			<adv_dhcp_config_file_override_path></adv_dhcp_config_file_override_path>
+		</opt1>
+		<opt2>
+			<descr><![CDATA[DMZ]]></descr>
+			<if>em3</if>
+			<spoofmac></spoofmac>
+			<enable></enable>
+			<ipaddr>10.10.10.1</ipaddr>
+			<subnet>24</subnet>
+		</opt2>
+	</interfaces>
+	<staticroutes>
+		<route>
+			<network>10.0.201.0/24</network>
+			<gateway>SRVFW01</gateway>
+			<descr></descr>
+		</route>
+		<route>
+			<network>10.0.202.0/24</network>
+			<gateway>SRVFW01</gateway>
+			<descr></descr>
+		</route>
+		<route>
+			<network>10.0.203.0/24</network>
+			<gateway>SRVFW01</gateway>
+			<descr></descr>
+		</route>
+		<route>
+			<network>10.0.204.0/24</network>
+			<gateway>SRVFW01</gateway>
+			<descr></descr>
+		</route>
+		<route>
+			<network>172.16.0.0/24</network>
+			<gateway>SRVFW01</gateway>
+			<descr><![CDATA[Red ESTRUCTURA]]></descr>
+		</route>
+	</staticroutes>
+	<dhcpd>
+		<lan>
+			<range>
+				<from>192.168.1.10</from>
+				<to>192.168.1.226</to>
+			</range>
+		</lan>
+	</dhcpd>
+	<dhcpdv6>
+		<lan>
+			<range>
+				<from>::1000</from>
+				<to>::2000</to>
+			</range>
+			<ramode>disabled</ramode>
+			<rapriority>medium</rapriority>
+		</lan>
+	</dhcpdv6>
+	<snmpd>
+		<syslocation></syslocation>
+		<syscontact></syscontact>
+		<rocommunity>public</rocommunity>
+	</snmpd>
+	<diag>
+		<ipv6nat>
+			<ipaddr></ipaddr>
+		</ipv6nat>
+	</diag>
+	<syslog>
+		<filterdescriptions>1</filterdescriptions>
+	</syslog>
+	<nat>
+		<outbound>
+			<mode>advanced</mode>
+			<rule>
+				<source>
+					<network>10.10.10.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<descr><![CDATA[Internet DMZ]]></descr>
+				<target>wanip</target>
+				<interface>wan</interface>
+				<poolopts></poolopts>
+				<source_hash_key></source_hash_key>
+				<ipprotocol>inet</ipprotocol>
+				<destination>
+					<any></any>
+				</destination>
+				<updated>
+					<time>1660057463</time>
+					<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+				</updated>
+				<created>
+					<time>1660057463</time>
+					<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<source>
+					<network>any</network>
+				</source>
+				<sourceport></sourceport>
+				<descr></descr>
+				<target>opt1ip</target>
+				<interface>opt1</interface>
+				<poolopts></poolopts>
+				<source_hash_key></source_hash_key>
+				<protocol>tcp/udp</protocol>
+				<destination>
+					<any></any>
+				</destination>
+				<dstport>1194</dstport>
+				<created>
+					<time>1646492182</time>
+					<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+				</created>
+				<updated>
+					<time>1646492380</time>
+					<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+				</updated>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<source>
+					<network>any</network>
+				</source>
+				<sourceport></sourceport>
+				<descr></descr>
+				<target>lanip</target>
+				<interface>lan</interface>
+				<poolopts></poolopts>
+				<source_hash_key></source_hash_key>
+				<protocol>tcp/udp</protocol>
+				<destination>
+					<any></any>
+				</destination>
+				<dstport>1194</dstport>
+				<updated>
+					<time>1646492834</time>
+					<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+				</updated>
+				<created>
+					<time>1646492834</time>
+					<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>127.0.0.0/8</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - localhost to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>127.0.0.0/8</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - localhost to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>127.0.0.0/8</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - localhost to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>127.0.0.0/8</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - localhost to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>::1/128</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - localhost to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>::1/128</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - localhost to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>::1/128</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - localhost to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>::1/128</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - localhost to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.201.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.201.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.201.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.201.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.202.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.202.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.202.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.202.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.203.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.203.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.203.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.203.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.204.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>10.0.204.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.204.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>10.0.204.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - static route to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>192.168.1.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - LAN to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>wan</interface>
+				<source>
+					<network>192.168.1.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>wanip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - LAN to METROTEL]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>192.168.1.0/24</network>
+				</source>
+				<dstport>500</dstport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<staticnatport></staticnatport>
+				<descr><![CDATA[Auto created rule for ISAKMP - LAN to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+			<rule>
+				<interface>opt1</interface>
+				<source>
+					<network>192.168.1.0/24</network>
+				</source>
+				<sourceport></sourceport>
+				<target>opt1ip</target>
+				<destination>
+					<any></any>
+				</destination>
+				<natport></natport>
+				<descr><![CDATA[Auto created rule - LAN to IPLAN]]></descr>
+				<created>
+					<time>1646430051</time>
+					<username><![CDATA[Manual Outbound NAT Switch]]></username>
+				</created>
+				<target_subnet></target_subnet>
+			</rule>
+		</outbound>
+		<separator></separator>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<network>wanip</network>
+				<port>10000-20000</port>
+			</destination>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>udp</protocol>
+			<target>10.10.10.3</target>
+			<local-port>10000</local-port>
+			<interface>wan</interface>
+			<descr></descr>
+			<associated-rule-id>nat_622619a130f918.00493848</associated-rule-id>
+			<created>
+				<time>1646664097</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1660057283</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<network>wanip</network>
+				<port>5060</port>
+			</destination>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>tcp/udp</protocol>
+			<target>10.10.10.3</target>
+			<local-port>5060</local-port>
+			<interface>wan</interface>
+			<descr></descr>
+			<associated-rule-id>nat_62f276efaf7d79.65425681</associated-rule-id>
+			<created>
+				<time>1660057327</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1660057340</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<network>opt1ip</network>
+				<port>1194</port>
+			</destination>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>tcp/udp</protocol>
+			<target>192.168.1.1</target>
+			<local-port>1194</local-port>
+			<interface>opt1</interface>
+			<descr><![CDATA[VPN IPLAN]]></descr>
+			<associated-rule-id>nat_622379a9750e16.86325176</associated-rule-id>
+			<created>
+				<time>1646492073</time>
+				<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1646492879</time>
+				<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+			</updated>
+		</rule>
+	</nat>
+	<filter>
+		<rule>
+			<id></id>
+			<tracker>1645798642</tracker>
+			<type>pass</type>
+			<interface>wan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>tcp/udp</protocol>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+				<port>1195</port>
+			</destination>
+			<descr></descr>
+			<updated>
+				<time>1645798642</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1645798642</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1645798573</tracker>
+			<type>pass</type>
+			<interface>wan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>icmp</protocol>
+			<icmptype>any</icmptype>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr></descr>
+			<updated>
+				<time>1645798573</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1645798573</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<descr><![CDATA[OpenVPN  wizard]]></descr>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<network>wanip</network>
+				<port>1194</port>
+			</destination>
+			<interface>wan</interface>
+			<protocol>udp</protocol>
+			<type>pass</type>
+			<enabled>on</enabled>
+			<tracker>1651607223</tracker>
+			<created>
+				<time>1651607223</time>
+				<username><![CDATA[OpenVPN Wizard]]></username>
+			</created>
+		</rule>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<interface>wan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>udp</protocol>
+			<destination>
+				<address>10.10.10.3</address>
+				<port>10000-20000</port>
+			</destination>
+			<descr><![CDATA[NAT ]]></descr>
+			<associated-rule-id>nat_622619a130f918.00493848</associated-rule-id>
+			<tracker>1646664097</tracker>
+			<created>
+				<time>1646664097</time>
+				<username><![CDATA[NAT Port Forward]]></username>
+			</created>
+		</rule>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<interface>wan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>tcp/udp</protocol>
+			<destination>
+				<address>10.10.10.3</address>
+				<port>5060</port>
+			</destination>
+			<descr><![CDATA[NAT ]]></descr>
+			<associated-rule-id>nat_62f276efaf7d79.65425681</associated-rule-id>
+			<tracker>1660057327</tracker>
+			<created>
+				<time>1660057327</time>
+				<username><![CDATA[NAT Port Forward]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1688994252</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<address>SMTP_godaddy</address>
+			</destination>
+			<descr></descr>
+			<gateway>WANGW</gateway>
+			<updated>
+				<time>1688994252</time>
+				<username><![CDATA[admin@10.0.202.19 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1688994252</time>
+				<username><![CDATA[admin@10.0.202.19 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1678976796</tracker>
+			<type>block</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>192.168.1.145</address>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr></descr>
+			<created>
+				<time>1678976796</time>
+				<username><![CDATA[admin@10.0.202.14 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1678976808</time>
+				<username><![CDATA[admin@10.0.202.14 (Local Database)]]></username>
+			</updated>
+			<disabled></disabled>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1646870690</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>icmp</protocol>
+			<icmptype>any</icmptype>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr></descr>
+			<updated>
+				<time>1646870690</time>
+				<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1646870690</time>
+				<username><![CDATA[admin@10.0.201.64 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>0100000101</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr><![CDATA[Default allow LAN to any rule]]></descr>
+			<updated>
+				<time>1686760724</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1686769280</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>172.16.0.0/24</address>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr><![CDATA[Default allow LAN to any rule]]></descr>
+			<created>
+				<time>1686769280</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1686769300</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1686769316</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>172.16.1.0/24</address>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr><![CDATA[Default allow LAN to any rule]]></descr>
+			<updated>
+				<time>1686769316</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1686769316</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1686769325</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>172.16.2.0/24</address>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr><![CDATA[Default allow LAN to any rule]]></descr>
+			<updated>
+				<time>1686769325</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1686769325</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<type>pass</type>
+			<ipprotocol>inet6</ipprotocol>
+			<descr><![CDATA[Default allow LAN IPv6 to any rule]]></descr>
+			<interface>lan</interface>
+			<tracker>0100000102</tracker>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1655347040</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>10.0.202.0/24</address>
+			</source>
+			<destination>
+				<address>10.10.10.2</address>
+			</destination>
+			<descr><![CDATA[Easy Rule: Passed from Firewall Log View]]></descr>
+			<created>
+				<time>1655347040</time>
+				<username><![CDATA[Easy Rule]]></username>
+			</created>
+			<updated>
+				<time>1655347069</time>
+				<username><![CDATA[admin@10.0.202.2 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<descr><![CDATA[OpenVPN  wizard]]></descr>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<interface>openvpn</interface>
+			<type>pass</type>
+			<enabled>on</enabled>
+			<tracker>1651607224</tracker>
+			<created>
+				<time>1651607223</time>
+				<username><![CDATA[OpenVPN Wizard]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1646429747</tracker>
+			<type>pass</type>
+			<interface>opt1</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>icmp</protocol>
+			<icmptype>any</icmptype>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<log></log>
+			<descr></descr>
+			<created>
+				<time>1646429747</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1646429880</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+			<disabled></disabled>
+		</rule>
+		<rule>
+			<source>
+				<any></any>
+			</source>
+			<interface>opt1</interface>
+			<ipprotocol>inet</ipprotocol>
+			<protocol>tcp/udp</protocol>
+			<destination>
+				<address>192.168.1.1</address>
+				<port>1194</port>
+			</destination>
+			<descr><![CDATA[NAT VPN IPLAN]]></descr>
+			<associated-rule-id>nat_622379a9750e16.86325176</associated-rule-id>
+			<tracker>1646492073</tracker>
+			<created>
+				<time>1646492073</time>
+				<username><![CDATA[NAT Port Forward]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1660054438</tracker>
+			<type>pass</type>
+			<interface>opt2</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>tcp</protocol>
+			<source>
+				<address>10.10.10.3</address>
+			</source>
+			<destination>
+				<address>192.168.1.204</address>
+				<port>3306</port>
+			</destination>
+			<descr><![CDATA[AK03 a BBDD MYSQL]]></descr>
+			<created>
+				<time>1660054438</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1660054933</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1668521183</tracker>
+			<type>pass</type>
+			<interface>opt2</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>tcp</protocol>
+			<source>
+				<address>10.10.10.2</address>
+			</source>
+			<destination>
+				<address>192.168.1.204</address>
+				<port>3306</port>
+			</destination>
+			<descr><![CDATA[AK03 a BBDD MYSQL]]></descr>
+			<updated>
+				<time>1668521183</time>
+				<username><![CDATA[admin@10.0.202.7 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1668521183</time>
+				<username><![CDATA[admin@10.0.202.7 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1660054454</tracker>
+			<type>pass</type>
+			<interface>opt2</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<address>10.10.10.3</address>
+			</source>
+			<destination>
+				<address>192.168.1.121</address>
+			</destination>
+			<descr><![CDATA[AK03 a GTW121]]></descr>
+			<created>
+				<time>1660054454</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</created>
+			<updated>
+				<time>1660054865</time>
+				<username><![CDATA[admin@192.168.1.186 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1655345736</tracker>
+			<type>pass</type>
+			<interface>opt2</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>icmp</protocol>
+			<icmptype>any</icmptype>
+			<source>
+				<any></any>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr></descr>
+			<updated>
+				<time>1655345736</time>
+				<username><![CDATA[admin@10.0.202.16 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1655345736</time>
+				<username><![CDATA[admin@10.0.202.16 (Local Database)]]></username>
+			</created>
+			<disabled></disabled>
+		</rule>
+		<separator>
+			<wan></wan>
+			<opt1></opt1>
+			<lan></lan>
+			<opt2></opt2>
+		</separator>
+	</filter>
+	<shaper></shaper>
+	<ipsec>
+		<client></client>
+	</ipsec>
+	<aliases>
+		<alias>
+			<name>SMTP_godaddy</name>
+			<type>host</type>
+			<address>173.201.193.229 173.201.193.101 68.178.252.229 68.178.252.101 216.69.141.185 216.69.141.184 92.204.80.1</address>
+			<descr></descr>
+			<detail><![CDATA[Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300||Entry added Mon, 10 Jul 2023 16:03:21 +0300]]></detail>
+		</alias>
+	</aliases>
+	<proxyarp></proxyarp>
+	<cron>
+		<item>
+			<minute>*/1</minute>
+			<hour>*</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/sbin/newsyslog</command>
+		</item>
+		<item>
+			<minute>1</minute>
+			<hour>3</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/etc/rc.periodic daily</command>
+		</item>
+		<item>
+			<minute>15</minute>
+			<hour>4</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>6</wday>
+			<who>root</who>
+			<command>/etc/rc.periodic weekly</command>
+		</item>
+		<item>
+			<minute>30</minute>
+			<hour>5</hour>
+			<mday>1</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/etc/rc.periodic monthly</command>
+		</item>
+		<item>
+			<minute>1,31</minute>
+			<hour>0-5</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 adjkerntz -a</command>
+		</item>
+		<item>
+			<minute>1</minute>
+			<hour>3</hour>
+			<mday>1</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /etc/rc.update_bogons.sh</command>
+		</item>
+		<item>
+			<minute>1</minute>
+			<hour>1</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /etc/rc.dyndns.update</command>
+		</item>
+		<item>
+			<minute>*/60</minute>
+			<hour>*</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /usr/local/sbin/expiretable -v -t 3600 virusprot</command>
+		</item>
+		<item>
+			<minute>30</minute>
+			<hour>12</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /etc/rc.update_urltables</command>
+		</item>
+		<item>
+			<minute>1</minute>
+			<hour>0</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /etc/rc.update_pkg_metadata</command>
+		</item>
+		<item>
+			<minute>0</minute>
+			<hour>0</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/local/sbin/squid -k rotate -f /usr/local/etc/squid/squid.conf</command>
+		</item>
+		<item>
+			<minute>15</minute>
+			<hour>0</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/local/pkg/swapstate_check.php</command>
+		</item>
+		<item>
+			<minute>0</minute>
+			<hour>0</hour>
+			<mday>*</mday>
+			<month>*</month>
+			<wday>*</wday>
+			<who>root</who>
+			<command>/usr/bin/nice -n20 /usr/local/etc/rc.d/squidGuard_logrotate</command>
+		</item>
+	</cron>
+	<wol></wol>
+	<rrd>
+		<enable></enable>
+	</rrd>
+	<widgets>
+		<sequence>system_information:col1:open:0,disks:col1:open:0,interfaces:col2:open:0,gateways:col2:open:0,traffic_graphs:col2:open:0,pfblockerng:col2:open:0</sequence>
+		<period>10</period>
+		<traffic_graphs>
+			<refreshinterval>1</refreshinterval>
+			<invert>true</invert>
+			<backgroundupdate>true</backgroundupdate>
+			<smoothfactor>0</smoothfactor>
+			<size>8</size>
+			<filter></filter>
+		</traffic_graphs>
+	</widgets>
+	<openvpn>
+		<openvpn-server>
+			<vpnid>1</vpnid>
+			<mode>server_user</mode>
+			<authmode>QRS AD</authmode>
+			<protocol>UDP4</protocol>
+			<dev_mode>tun</dev_mode>
+			<interface>wan</interface>
+			<local_port>1194</local_port>
+			<description></description>
+			<tls>IwojIDIwNDggYml0IE9wZW5WUE4gc3RhdGljIGtleQojCi0tLS0tQkVHSU4gT3BlblZQTiBTdGF0aWMga2V5IFYxLS0tLS0KZGJkMTgwODE0MzZmZmIxZTdmOWM1YWUwOGQwODQ1NjkKZDY3YTQ3MDJkNWRiZWJlZGFhYWI4MzdiZDliN2U0ZjQKY2Q4ODlmMDM3NmY2M2U0NTQwMzhiNTkyODU0YmZlY2YKZjYwM2ZmZTI4MTc5ZGFmYWVkOGMzZDdlZWExNjM0ZjIKZTVkMzFjMzBmNzdjNTllNzJjODkzYjQwM2JjNjc4ZDQKOWUxODdlYzRkOTg3ODAxZWRmMjdlNGVhODBiZmI2NTAKNWU4ZDJmNjEzYTY5NDI0ZjUzN2EyYTEwOGY1ODAxMWYKOWRjMDVmMmJhM2ZkNzFkNTZmMWJlODYyYmU0OThmMjkKYWNmOWVhY2U1NjA3MWYxY2ZjZTFmYzA0YTEyZjZjNTEKMjE4NjQ0ZTVjNTc0MGMyZTUzMmEyM2ZiNTlmOTJkZWYKNDI1NTg3OWNkZTY4MjZlM2I4YjY5OWQzOWU0NGQ1ODgKNjExOTg0MTVlNTVjMDczODFmODNkZDcyOWQ4ZDU1YzcKYzBhNDk3ZTNlMzBiYmE3MTM5NTZhNzU4NWQyZjEwZjIKYjViNzViNmRkY2IzMTE2NjViOTg4Y2FjMGFiNDRhYmUKMDZmNjJkMzZhYjZjN2UxZTNlZWI4YjI5MjUxZWUxNmUKNGEzMjMwNjk0NGQxOGI3ZWE3Njg4ZTU0YzBmYTUzZTkKLS0tLS1FTkQgT3BlblZQTiBTdGF0aWMga2V5IFYxLS0tLS0K</tls>
+			<tls_type>auth</tls_type>
+			<caref>627186b74e085</caref>
+			<certref>627186b7794a9</certref>
+			<dh_length>2048</dh_length>
+			<ncp_enable>enabled</ncp_enable>
+			<data_ciphers>AES-256-GCM,AES-128-GCM,CHACHA20-POLY1305</data_ciphers>
+			<data_ciphers_fallback>AES-256-CBC</data_ciphers_fallback>
+			<digest>SHA256</digest>
+			<engine>none</engine>
+			<tunnel_network>10.207.0.0/24</tunnel_network>
+			<local_network>192.168.1.0/24</local_network>
+			<allow_compression>no</allow_compression>
+			<dynamic_ip>yes</dynamic_ip>
+			<topology>subnet</topology>
+			<dns_domain>qrsgroup.lan</dns_domain>
+			<dns_server1>192.168.1.207</dns_server1>
+			<dns_server2>192.168.1.214</dns_server2>
+			<exit_notify>1</exit_notify>
+			<inactive_seconds>300</inactive_seconds>
+		</openvpn-server>
+	</openvpn>
+	<dnshaper>
+		<queue>
+			<name>Bajada</name>
+			<number>1</number>
+			<qlimit></qlimit>
+			<plr></plr>
+			<description></description>
+			<bandwidth>
+				<item>
+					<bw>4</bw>
+					<burst></burst>
+					<bwscale>Mb</bwscale>
+					<bwsched>none</bwsched>
+				</item>
+			</bandwidth>
+			<enabled>on</enabled>
+			<buckets></buckets>
+			<mask>none</mask>
+			<maskbits></maskbits>
+			<maskbitsv6></maskbitsv6>
+			<delay>0</delay>
+			<sched>wf2q+</sched>
+			<aqm>droptail</aqm>
+			<ecn></ecn>
+		</queue>
+		<queue>
+			<name>Subida</name>
+			<number>2</number>
+			<qlimit></qlimit>
+			<plr></plr>
+			<description></description>
+			<bandwidth>
+				<item>
+					<bw>30</bw>
+					<burst></burst>
+					<bwscale>Mb</bwscale>
+					<bwsched>none</bwsched>
+				</item>
+			</bandwidth>
+			<enabled>on</enabled>
+			<buckets></buckets>
+			<mask>none</mask>
+			<maskbits></maskbits>
+			<maskbitsv6></maskbitsv6>
+			<delay>0</delay>
+			<sched>wf2q+</sched>
+			<aqm>droptail</aqm>
+			<ecn></ecn>
+		</queue>
+	</dnshaper>
+	<unbound>
+		<enable></enable>
+		<dnssec></dnssec>
+		<active_interface></active_interface>
+		<outgoing_interface></outgoing_interface>
+		<custom_options></custom_options>
+		<hideidentity></hideidentity>
+		<hideversion></hideversion>
+		<dnssecstripped></dnssecstripped>
+	</unbound>
+	<vlans></vlans>
+	<qinqs></qinqs>
+	<gateways>
+		<gateway_item>
+			<interface>wan</interface>
+			<gateway>190.111.245.25</gateway>
+			<name>WANGW</name>
+			<weight>1</weight>
+			<descr><![CDATA[WAN Gateway]]></descr>
+			<defaultgw></defaultgw>
+		</gateway_item>
+		<gateway_item>
+			<interface>lan</interface>
+			<gateway>192.168.1.253</gateway>
+			<name>SRVFW01</name>
+			<weight>1</weight>
+			<ipprotocol>inet</ipprotocol>
+			<descr><![CDATA[LAN]]></descr>
+		</gateway_item>
+		<defaultgw4>TELECOM_DHCP</defaultgw4>
+		<defaultgw6></defaultgw6>
+	</gateways>
+	<dnsmasq></dnsmasq>
+	<ntpd></ntpd>
+	<cert>
+		<refid>6218dd25a1153</refid>
+		<descr><![CDATA[webConfigurator default (6218dd25a1153)]]></descr>
+		<type>server</type>
+		<crt>LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVlekNDQTJPZ0F3SUJBZ0lJV3NmVjZyVmNmdWN3RFFZSktvWklodmNOQVFFTEJRQXdXakU0TURZR0ExVUUKQ2hNdmNHWlRaVzV6WlNCM1pXSkRiMjVtYVdkMWNtRjBiM0lnVTJWc1ppMVRhV2R1WldRZ1EyVnlkR2xtYVdOaApkR1V4SGpBY0JnTlZCQU1URlhCbVUyVnVjMlV0TmpJeE9HUmtNalZoTVRFMU16QWVGdzB5TkRBNE1UQXdOREUwCk16SmFGdzB5TlRBNU1USXdOREUwTXpKYU1Gb3hPREEyQmdOVkJBb1RMM0JtVTJWdWMyVWdkMlZpUTI5dVptbG4KZFhKaGRHOXlJRk5sYkdZdFUybG5ibVZrSUVObGNuUnBabWxqWVhSbE1SNHdIQVlEVlFRREV4VndabE5sYm5ObApMVFl5TVRoa1pESTFZVEV4TlRNd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUN4ClR4eFBQZzFEV21CK1dQQzdZY3M2RG96YVhJNG1xUWJ0T0xGRURocGRLZzc5NGhuU1d0bDNZdTBZY0hwVWw1ZDgKcnBlaysyUXJJcWZzbjkyb2dqK1JEeFI4YUZUbkc0OVBXeG1LUU5lRzV6anpBRjV5T055UVZQL2VqSW1XOFdvMAp1cDQ1MHlxWDd1eHpJc01nbmVrRGY0c0tXSVJSUE5qSnZ3Y2tWUlZ1UWJFd0N3S3NOc2IwSVVGZkg4bkRBZEQ1CkFUQmQ5TVhxU2RwcXlZdW54TzFKbHhPQWVZNGJ5ZXJqSmh5dUlPQmt0SDhnbmtKTVh4R2VHYzNMQVM4eHlpcFoKTmFTdHRSNDFDZDl0YmFtOFNEeS9oUnI0b1JLYld4b3J2dkYwZDFmKzVpNElJc0lGY1d4Z3diUEdVTENpQVRqdwovNVNJNXV1WUFIRTVLaTE1WXVKMUFnTUJBQUdqZ2dGRE1JSUJQekFKQmdOVkhSTUVBakFBTUJFR0NXQ0dTQUdHCitFSUJBUVFFQXdJR1FEQUxCZ05WSFE4RUJBTUNCYUF3TXdZSllJWklBWWI0UWdFTkJDWVdKRTl3Wlc1VFUwd2cKUjJWdVpYSmhkR1ZrSUZObGNuWmxjaUJEWlhKMGFXWnBZMkYwWlRBZEJnTlZIUTRFRmdRVXI3U2M1UnBwdi9Kawo5S2J5cWFMUGF1QzFtSXN3Y3dZRFZSMGpCR3d3YXFGZXBGd3dXakU0TURZR0ExVUVDaE12Y0daVFpXNXpaU0IzClpXSkRiMjVtYVdkMWNtRjBiM0lnVTJWc1ppMVRhV2R1WldRZ1EyVnlkR2xtYVdOaGRHVXhIakFjQmdOVkJBTVQKRlhCbVUyVnVjMlV0TmpJeE9HUmtNalZoTVRFMU00SUlXc2ZWNnJWY2Z1Y3dKd1lEVlIwbEJDQXdIZ1lJS3dZQgpCUVVIQXdFR0NDc0dBUVVGQndNQ0JnZ3JCZ0VGQlFnQ0FqQWdCZ05WSFJFRUdUQVhnaFZ3WmxObGJuTmxMVFl5Ck1UaGtaREkxWVRFeE5UTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQmRwWFp3YUU4MFJiOGFnN3p2OEZmSkcKUW05VmVuOUxDSzV2Q1F2NFRDbEhndjBHdFBRVktPWVRTWTAwZk9LbUlMYWgrZ3BsMmVoSWxITXh5dk5qME9rZQoxVlZURTEzQUdSQXYwNVl5aFY3WUVwMmZEU2JtbmluNDRVVjEvb1FzamFrK2RIYVQyVnpTMmFhcnN4aFJWU0VGCjczKzNyV2dER2U5aFhodytVWEw1aGZJemdyYlVKeWpscTdmRUw5SldlbzVTMUxLNlRSMkErNlM2RGZ2VlFtM2YKVzBKNkMzMElGTmZKdEpxNjJCMGxWK01KWUFhMmg2S0xMK1dJc2Y3L0VQRHRYdlYxeGFyMUdOMTFtb0VzL2tHcQpSSzE1dVJjWDRwekkwNyt5citBTlA2aGdISE9xc1VJY0liSnQ1UTJkcGJKOHh4QzVwY1luR1FBZ1ZyUGU1T289Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K</crt>
+		<prv>LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQ3hUeHhQUGcxRFdtQisKV1BDN1ljczZEb3phWEk0bXFRYnRPTEZFRGhwZEtnNzk0aG5TV3RsM1l1MFljSHBVbDVkOHJwZWsrMlFySXFmcwpuOTJvZ2orUkR4UjhhRlRuRzQ5UFd4bUtRTmVHNXpqekFGNXlPTnlRVlAvZWpJbVc4V28wdXA0NTB5cVg3dXh6CklzTWduZWtEZjRzS1dJUlJQTmpKdndja1ZSVnVRYkV3Q3dLc05zYjBJVUZmSDhuREFkRDVBVEJkOU1YcVNkcHEKeVl1bnhPMUpseE9BZVk0YnllcmpKaHl1SU9Ca3RIOGdua0pNWHhHZUdjM0xBUzh4eWlwWk5hU3R0UjQxQ2Q5dApiYW04U0R5L2hScjRvUktiV3hvcnZ2RjBkMWYrNWk0SUlzSUZjV3hnd2JQR1VMQ2lBVGp3LzVTSTV1dVlBSEU1CktpMTVZdUoxQWdNQkFBRUNnZ0VBTXVySThtaWJYbkFocmFiVTJycW1wYkZ2K1hVQ3pVOVUwZUtwNVNVM3BQRmoKQkwxZE5POHA3QUxZbTJBUmdTRlhPMUxYOFdUUHl5TlVuYnI2NkYwZTdBVXNtTjFOSkdEaHNxUXluV1VwZjIvLwpCcWxnZGVTbVVqeFdqZzVGcExjSERNVmFrcmgxVHRRcHlwWjgrbXplY1VhN0l1bHdkZlBIUFloQ0FNaitNbjdvCmI1QTNUbktFZncxZ2hSRG80dWlyMkZ1QmxGNmNkTTRPUmNvTTY3ZnI3WFlUSnJxWWw3ZHRWN25EY2s4U2twRloKODZ5TlIyOGwrMGQ0UHFNN3lXMlpIVFhxUUZhNVVSZ0JZSWZhNVhWK1huYjZXd1IxYzJJdDVtWEtrbmJGWldCNApaZGlYdHdydFovaFU5V2FKZG0zNEYzUUk5ZFIxWFVWdHR4UjZjNnZmQVFLQmdRRGQ5cktHdmpEMjJiZHZBMndKCjVvRmJvc1RCN3hWMXYyQk1oVHRrMEYxUFZ6QU0vaGtNQUs1THFOVnV0Y0hsWmJPTG5qOUpNczFwWEo4NHNCa2YKeGY5VnBxbUZOSUg1V0hQOTBqWTRJKzViZ0NzOXdxT3U0bmM2d3AwUjFzTTVMNzRYeVJXb3UwZTdIMGdFc216KwpHMmpNVTVGUGRyWGJPazNObUdoU2UvZXZ4UUtCZ1FETWYzaTExeVZHd0I4Ull1dFVnekdHcmdJdnBUbTdUeXQxCkpHVUpBQ1dEYmlpTjN2V1o5ZVFiOG85dEFPRVFNWnN5Y3FxeTl4OGF3WmhaN3J1RkRBTHlsYmtnbzhvcUNIbjkKV1NWVk9zS2ZNYXo5NG1DZ25BRGJHcnMrSDRJUW15dGh2SFFGaXpPV3hlTFluNThuN2dsMFVtVzR4clNWbDlNRwo2MjdBRGdsaThRS0JnUURLWnJmNnVKbkxyMUplcjc4bjlBS0hmaEJ2UzhYRTNtTkF3OGthTUFxMlc2bmNYeVNWCjFsVVpkdlpSQXZxeFpTRHBNcjlBejB1U1JUeUhvOFQxUFVhTll2RjRIeDVhTWpkcS8vSWpGVmk0SlZMSSthRHEKeTJXdnRtRW1NREZMQjJjUEozVlJySjFIVzhuL1JuaXU2bTJReks5WHg4Y2pCcktGeFBGMExjajVoUUtCZ0YzbgpVdmk5T0tMS2FmbkQ0S2hJTGgvWUc2emhSQ2RjN1dtM01xWDFhVVIyK3l4YWE1RXRObmdXNUFGNzI5MWh5aEJhClUwUW04aU9KTG5wdGc3Sk9sN1BwU0w5U051MGlRMUl3ODFHMXo5VG1MTGZRa2VwdWVINGtRa0wrbU8wak04S0gKbFFkT3FudmJscFUraHdrQTUxcUEwN0VMbmJUcnFMMk9zcWFDUzVFaEFvR0JBSTkzc0tpRlJYblJCbXBEZVBIMgpub3lxOTkxTUNuWktLTkVPLzJhK3J0ZEd4VVhMMUtiTzdKbWN4bFN6dHhQNlNwa0VhVC9lV3o1TUQ5c3dsY2FGCjd1OHZXN1NIUUsvb1FJYjdUczRONTkzc1p1MzJZWHhUS0lRWkZwNWZha09wRzJsZWlQWnFQdU8yRGl0cnRpNE0KTzlQNTlPdnJYdVpVMVNiRTAvdTRtWDhECi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K</prv>
+	</cert>
+	<cert>
+		<refid>627186b7794a9</refid>
+		<descr><![CDATA[QRS OPENVPN 22020503 Server Cert]]></descr>
+		<type>server</type>
+		<caref>627186b74e085</caref>
+		<crt>LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVhVENDQTFHZ0F3SUJBZ0lCQWpBTkJna3Foa2lHOXcwQkFRc0ZBREJXTVIwd0d3WURWUVFERXhSUlVsTWcKVDFCRlRsWlFUaUF5TWpBeU1EVXdNekVMTUFrR0ExVUVCaE1DUVZJeEN6QUpCZ05WQkFnVEFrSkJNUTB3Q3dZRApWUVFIRXdSRFFVSkJNUXd3Q2dZRFZRUUtFd05SVWxNd0hoY05NalF3T0RFd01EUXhOREEzV2hjTk1qVXdPVEV5Ck1EUXhOREEzV2pCaU1Ta3dKd1lEVlFRREV5QlJVbE1nVDFCRlRsWlFUaUF5TWpBeU1EVXdNeUJUWlhKMlpYSWcKUTJWeWRERUxNQWtHQTFVRUJoTUNRVkl4Q3pBSkJnTlZCQWdUQWtKQk1RMHdDd1lEVlFRSEV3UkRRVUpCTVF3dwpDZ1lEVlFRS0V3TlJVbE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRRFRyTlo2CjdydTIwQStDdnNUb05YZXJ0aXVZb242WGw2eS9nZGlWVk0rTGtuMG95ZWFzMExCS1E5SmJJTW9GYWNZNDVUZzcKVm0wc3RIN3h5UkdrMkJkaCtOT3VVeVY3a3RtZjVqMC9MZHNkMnFGbGxobkQwOTlrVVFSQkQ1OVJ6clMxNUEvMwpiYzZnVTVycnJjWEp3a3BjaEw5Qi9GU2I2ZWk2NkRidkNtVTVJVmF3SmVSN0VPRi9NeVdpRlo2aHczVitIQXBmCkdEWFhCVUNmamliOWhtTGJIV1U4azFkb3pNODhTSjE5Q01PWVFkTENIa2pVOXAwZ2F3WjZEVnFJUEFDVGVqNjMKSXBEUXFaSFJlVER5NUJaTnA3bEdOUzBKZG5LR3BNTHNGdkx6bERmUlhQRW9oK1lxYjVEYzd6N0R4M1NKd2JqNgpILzhrK1lVMTYvaGFQd3FoQWdNQkFBR2pnZ0UwTUlJQk1EQUpCZ05WSFJNRUFqQUFNQkVHQ1dDR1NBR0crRUlCCkFRUUVBd0lHUURBTEJnTlZIUThFQkFNQ0JhQXdNd1lKWUlaSUFZYjRRZ0VOQkNZV0pFOXdaVzVUVTB3Z1IyVnUKWlhKaGRHVmtJRk5sY25abGNpQkRaWEowYVdacFkyRjBaVEFkQmdOVkhRNEVGZ1FVZHFwc01LOXgxWVdJekRDawo3MW9KK0J4Sklpa3dnWVVHQTFVZEl3UitNSHlBRkljaEM3Z3MyVGc1NFE1OVpYejRFR2V2bkw2OG9WcWtXREJXCk1SMHdHd1lEVlFRREV4UlJVbE1nVDFCRlRsWlFUaUF5TWpBeU1EVXdNekVMTUFrR0ExVUVCaE1DUVZJeEN6QUoKQmdOVkJBZ1RBa0pCTVEwd0N3WURWUVFIRXdSRFFVSkJNUXd3Q2dZRFZRUUtFd05SVWxPQ0NGWG1zSVdiRXY0NgpNQ2NHQTFVZEpRUWdNQjRHQ0NzR0FRVUZCd01CQmdnckJnRUZCUWNEQWdZSUt3WUJCUVVJQWdJd0RRWUpLb1pJCmh2Y05BUUVMQlFBRGdnRUJBS21KWnAxM3NhcFdkV3l5aUFVZ1JFa2pFN2dPczBmUFNCZ3RtR29WeWFDUE5Ybk0Kd1NyMEVCb3Q4cHVuS3dkZDI0K1VycmJMMFpJb3hHdlBDTG5wQzBhckpZZ3hod3lQa0Ezc3VGMUNPVE9adFRRagpMWGNyNU5OVTVmYWMrUjFHSUpneTJoQ3BCeS92QTlLbVduM0x2YkNDMU9nU1JEdmVVUDVLME54dHBLUDNNMWNVCk03QnVSYlVVYUpiaHJrbW1SNDUweEUvTjFRZHRPckp6QWkzczBueElpZE1ENHorUm42UExiaUNHQjUwd0pzTTEKOTZiUG1iTC8zcVd6M0FpTXhnOGF2TjQrL0tTK1VuOW5YQUx2TmdwcFlOWHl3OXhRSnlubUpXR05SdmtyZEd1NworN2FFYVJKOVl0dnhGYWJoNVFPZDdyUG9SWHpsczBtNTdHUTZHbU09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K</crt>
+		<prv>LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2QUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktZd2dnU2lBZ0VBQW9JQkFRRFRyTlo2N3J1MjBBK0MKdnNUb05YZXJ0aXVZb242WGw2eS9nZGlWVk0rTGtuMG95ZWFzMExCS1E5SmJJTW9GYWNZNDVUZzdWbTBzdEg3eAp5UkdrMkJkaCtOT3VVeVY3a3RtZjVqMC9MZHNkMnFGbGxobkQwOTlrVVFSQkQ1OVJ6clMxNUEvM2JjNmdVNXJyCnJjWEp3a3BjaEw5Qi9GU2I2ZWk2NkRidkNtVTVJVmF3SmVSN0VPRi9NeVdpRlo2aHczVitIQXBmR0RYWEJVQ2YKamliOWhtTGJIV1U4azFkb3pNODhTSjE5Q01PWVFkTENIa2pVOXAwZ2F3WjZEVnFJUEFDVGVqNjNJcERRcVpIUgplVER5NUJaTnA3bEdOUzBKZG5LR3BNTHNGdkx6bERmUlhQRW9oK1lxYjVEYzd6N0R4M1NKd2JqNkgvOGsrWVUxCjYvaGFQd3FoQWdNQkFBRUNnZ0VBZHFSd2p2VFNkL1FFVFpjWmpNR3pNcVpucHlTazZkalV0WDVVNDlabWdlZDQKaVcwcEF3SHhYWjdILzlYUUJkcTBoTjFOZUV6SDRuL0VpMGJVd2Qxd3RiUWZDWjJHNjgxeWR5STRmL24yejdQawpOS2srQmJueWd5cTV4TEc1N2NON0hGd1k2dWs4SURiY0pXNy81a2NsSU5neXp3eGNiQXRlSzZ6T1pZc2hFelJzCmRmTzRucWpHV0drUEFUTXJjSERGTnEydXlSZGI5Vnp6VEt6REhVU3cvZHZoTHQxYmx3WWlwMTVUa2tvZk5lQjAKdnEwMXFJOG1nME1jenZzUjBTN1hUbmg4L0wyQzZEb3lpWktiYnltTEFhR1h0U1IvcHdkQkpXQ3o0VWVHMWUvaAp6dGhJNUxUSHBJbmE5NWJtT09jYVR1U3R3MzVYL1dmSmYrRVM4VlJFY1FLQmdRRHV4T0xqVytJQmllalRpQmdrCjRMUW80VXYwN2ZqS3RZWUs4YTdNQXVLMGMzMWJJN1hSM1grSnM3QzRFYWpnUUk1Z2Z1eGxRZ3R6Yzkwcmd2RUgKTEt5V1IxdWJ4Q0F1Z3pmbUh4NUd4ZVJIRk1RUVVvbkhUWE4rUFluSDNwQjYxMm13ZXFGTWFNVituaXV6b3BZMAppbG9JdFR2YzVXN2dlRzc2Vkk4Vm93L1kxUUtCZ1FEaTgyaFFSTHIvYkVCOXdUNDFTTXd3TE0rMkRrNG5WaGdjCkNzV0pNdHE0NTA4WGZtVmVpcktMSCtVaEh0QWQ0a3NDSmRyVmozaGRqcE0vdnhKem41TTdIdDY1eFpabUJxRVEKSGg1NGduTHJNZ2NFOWhERUdBYlQ4YXUxWGluRldvQXVtZ3hGck5jYmlodXU0dlJ3MGNkdzUxNGpPS2pDcDM4OQpOZmNOZ1BMUW5RS0JnR0hrSExWa05WdTJJOXVkMzNBM0pBWGlvSmFSZmovMWZqZzhjQks2V0NIdGU0YUROSWNQClRidXlEUkRhUktkME1DdEZ2anVoZ1RwYlZXRUNkVGtneXIxdUVoUGhxK1FGN2tRTm5BY2VHUUkvZEViUTRDWHoKRGhmQ3VSdFZsMXlWdG9JaE5NSXo3a3lFSXB5cVd2UzlpRDRydDVoUUJFNUpjZzUxM3BmYlc2TGxBb0dBWXdYWApadWFHUFBwTHJWTUt4SThONEpzOHllKzE4LzNocVNLZUMvM3ZaeXd0MjA5Z0JYODQ1ZkUxdFZ6UGE2cVlGY2pVCmtjZjJ1Y09DeGhhbGcyT0dCdzZ5R1paM3grNXVpaXpLR01TNlJacmZheSsrSXdGa3dVYzZKM2w5ZWtuQmtoUE8KOVB1MEk2VC83Uy9EZmhKYUZnNHRpZXFuMzc3YmlxYW9NL0VtZ1JVQ2dZQWs5K1pNbVhUaEd0bjRVL09TMXJKVQppRWZNSkFtNlIranVVZjNrUThiZkdsVHUzNTV3STlLZUMrYjBmQmFlaXh5Rmw4NVR2ak9FMkdQYnVxR3ZsZnBqClY4WXlJbmsyVXJpbGY2Zi8rYUQ0cDdmVVd5Uy9qSHkrbWJoNWQzUDJKc3FpM0ZHNngvSUtpdDZrRUZxMFQvZC8KUDZxWjFLYnl3REp4Z05qY0w5RkQzUT09Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K</prv>
+	</cert>
+	<revision>
+		<time>1723263272</time>
+		<description><![CDATA[admin@10.0.202.2 (Local Database): Renewed Certificate 6218dd25a1153 (webConfigurator default (6218dd25a1153)) - Serial 7556747193235966961 -&gt; 6541432187820736231]]></description>
+		<username><![CDATA[admin@10.0.202.2 (Local Database)]]></username>
+	</revision>
+	<ppps></ppps>
+	<ovpnserver>
+		<step1>
+			<type>ldap</type>
+		</step1>
+		<step2>
+			<authtype>QRS AD</authtype>
+			<ip>192.168.1.207</ip>
+			<port>389</port>
+			<transport>Standard TCP</transport>
+			<ldap_caref>global</ldap_caref>
+			<ldap_protver>3</ldap_protver>
+			<ldap_timeout>25</ldap_timeout>
+			<scope>subtree</scope>
+			<basedn>OU=Presidencia,OU=Users_QRS,DC=qrsgroup,DC=lan</basedn>
+			<userdn>cn=usr_ldap,ou=Servicios,ou=Users_QRS,dc=qrsgroup,dc=lan</userdn>
+			<passdn>usr_ldap_2021</passdn>
+			<nameattr>samAccountName</nameattr>
+			<groupattr>cn</groupattr>
+			<memberattr>member</memberattr>
+			<ldap_attr_groupobj><![CDATA[posixGroup]]></ldap_attr_groupobj>
+			<authscope>CN=Users_QRS,DC=qrsgroup,DC=lan</authscope>
+			<uselist>on</uselist>
+		</step2>
+		<step6>
+			<certca><![CDATA[QRS OPENVPN 22020503]]></certca>
+			<keylength>2048</keylength>
+			<lifetime>3650</lifetime>
+			<country>AR</country>
+			<state><![CDATA[BA]]></state>
+			<city><![CDATA[CABA]]></city>
+			<organization><![CDATA[QRS]]></organization>
+			<uselist>on</uselist>
+		</step6>
+		<step9>
+			<certname><![CDATA[QRS OPENVPN 22020503 Server Cert]]></certname>
+			<keylength>2048</keylength>
+			<lifetime>398</lifetime>
+			<country>AR</country>
+			<state><![CDATA[BA]]></state>
+			<city><![CDATA[CABA]]></city>
+			<organization><![CDATA[QRS]]></organization>
+			<uselist>on</uselist>
+		</step9>
+		<step10>
+			<interface>wan</interface>
+			<protocol>UDP4</protocol>
+			<localport>1194</localport>
+			<tlsauth>on</tlsauth>
+			<gentlskey>on</gentlskey>
+			<dhkey>2048</dhkey>
+			<ncpenable>on</ncpenable>
+			<dataciphers>AES-256-GCM,AES-128-GCM,CHACHA20-POLY1305</dataciphers>
+			<dataciphersfallback>AES-256-CBC</dataciphersfallback>
+			<digest>SHA256</digest>
+			<engine>none</engine>
+			<tunnelnet>10.207.0.0/24</tunnelnet>
+			<localnet>192.168.1.0/24</localnet>
+			<allowcompression>no</allowcompression>
+			<dynip>on</dynip>
+			<topology>subnet</topology>
+			<defaultdomain>qrsgroup.lan</defaultdomain>
+			<dns1>192.168.1.207</dns1>
+			<dns2>192.168.1.214</dns2>
+			<nbttype>0</nbttype>
+		</step10>
+		<step11>
+			<ovpnrule>on</ovpnrule>
+			<ovpnallow>on</ovpnallow>
+		</step11>
+	</ovpnserver>
+	<ca>
+		<refid>627186b74e085</refid>
+		<descr><![CDATA[QRS OPENVPN 22020503]]></descr>
+		<crt>LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQ5RENDQXR5Z0F3SUJBZ0lJVmVhd2hac1Mvam93RFFZSktvWklodmNOQVFFTEJRQXdWakVkTUJzR0ExVUUKQXhNVVVWSlRJRTlRUlU1V1VFNGdNakl3TWpBMU1ETXhDekFKQmdOVkJBWVRBa0ZTTVFzd0NRWURWUVFJRXdKQwpRVEVOTUFzR0ExVUVCeE1FUTBGQ1FURU1NQW9HQTFVRUNoTURVVkpUTUI0WERUSXlNRFV3TXpFNU5EY3dNMW9YCkRUTXlNRFF6TURFNU5EY3dNMW93VmpFZE1Cc0dBMVVFQXhNVVVWSlRJRTlRUlU1V1VFNGdNakl3TWpBMU1ETXgKQ3pBSkJnTlZCQVlUQWtGU01Rc3dDUVlEVlFRSUV3SkNRVEVOTUFzR0ExVUVCeE1FUTBGQ1FURU1NQW9HQTFVRQpDaE1EVVZKVE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdjNiWWZpUlc0b3BqClk3MTV1SlZMR0hsTDN4Q3FSV3VWd2g1WVNtd1YvSWwzYnZQTWNaSFE0clVCNkZOK1RmUC8yakZQUUx4blhGMnAKbStRUit6anpsVkxoMXZEeXNKcUQ2UDRYdFRjamw5MVN6WnNQeXF3dUVDckgzTFlMQXo3Q3A4NnEzRGZ1RGxqUwp3QmxtRU0rWkxQeERhR0VIaE9kYVJHNm5LMXNtRWFRallwb3Z1SzRIc2FTcE1TUkcwUVc3TGtiWXJicEFCRWM0CmhVUXArOEVGeTZCeGJmaDB5U0Y3Y1ZMMVpEcjZqR0FEVG9hc08wQ01qektHZUNKMHBDempPMzdCS0hUbExtVjEKKzhyVm9kYXY5OW1SclVxY2I4dEdFNWRQQzFuR1NZNjJoZk5yem0vbjVXV0tJUFY5cmcyUDdFdTZVQUowbWNLRQpza1VMSk5NczJ3SURBUUFCbzRIRk1JSENNQjBHQTFVZERnUVdCQlNISVF1NExOazRPZUVPZldWOCtCQm5yNXkrCnZEQ0JoUVlEVlIwakJINHdmSUFVaHlFTHVDelpPRG5oRG4xbGZQZ1FaNitjdnJ5aFdxUllNRll4SFRBYkJnTlYKQkFNVEZGRlNVeUJQVUVWT1ZsQk9JREl5TURJd05UQXpNUXN3Q1FZRFZRUUdFd0pCVWpFTE1Ba0dBMVVFQ0JNQwpRa0V4RFRBTEJnTlZCQWNUQkVOQlFrRXhEREFLQmdOVkJBb1RBMUZTVTRJSVZlYXdoWnNTL2pvd0RBWURWUjBUCkJBVXdBd0VCL3pBTEJnTlZIUThFQkFNQ0FRWXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQlBZcDc5UXlZR2gKY3NxZUwvOFliTU1oU1BsdzB5aXMxbll5eEZkVGVHRHJYb2dBaEtpeEg1YWtFaHVJU3VYQy9mMWVUR3dBTEF1bgpyQmdWZUN1VFRTY3NCUzhJbnVyZDJod3lRZEp0aWUrckhjS1FTbHhmS2ZmQ29MMDE4THUvcE5KRFhvT241MW1MClQxeFFpajJNUG9Jc1ZTUlJZWUVNMHlBZ05MZnp3cklMajJZQ3lqZmZ3eDNqUmtZc0VXakZ4bE12YkpudlpWWVoKYnJqMmlsRmlBTzIzbWZHWFZQbUZYVndNYjJCS2p2NGo4R215eU1PMi9nNWc3Nlk2QzRYN1ovOUhwcFlHRTQ1NwpDT3NmQjAxS2ZucitMdEprTGMyNElGV2owbVlhdEY2R1JwUFlzdXNLQXd3SlZ0T3ZubUZoUHptR0FqdDJmU1ozCk5mVWlvUk5LRmhnPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==</crt>
+		<prv>LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQy9kdGgrSkZiaWltTmoKdlhtNGxVc1llVXZmRUtwRmE1WENIbGhLYkJYOGlYZHU4OHh4a2REaXRRSG9VMzVOOC8vYU1VOUF2R2RjWGFtYgo1Qkg3T1BPVlV1SFc4UEt3bW9Qby9oZTFOeU9YM1ZMTm13L0tyQzRRS3NmY3Rnc0RQc0tuenFyY04rNE9XTkxBCkdXWVF6NWtzL0VOb1lRZUU1MXBFYnFjcld5WVJwQ05pbWkrNHJnZXhwS2t4SkViUkJic3VSdGl0dWtBRVJ6aUYKUkNuN3dRWExvSEZ0K0hUSklYdHhVdlZrT3ZxTVlBTk9ocXc3UUl5UE1vWjRJblNrTE9NN2ZzRW9kT1V1WlhYNwp5dFdoMXEvMzJaR3RTcHh2eTBZVGwwOExXY1pKanJhRjgydk9iK2ZsWllvZzlYMnVEWS9zUzdwUUFuU1p3b1N5ClJRc2sweXpiQWdNQkFBRUNnZ0VCQUxRdHVXcHI5RC9ZajlQSytZTlZLNGhxalpYcjd2REpYL04vN3dLS1dONkEKMXg1WTNDcDhXS0VnU2gxQ2hYZ0NpT0hpeVh4WVVNVEJkOTIyY1oyRGFPYzdTa0NtR3gxTEs1dlZrcVg4cjhnNApoYlhybUo3WURiazFLVVJ4SkVmM2hlTzVQMTFpWE9xdmVCVkRVYU84V1ovVi9mRjZia01LSFE2Tk8xQTN4TW1QCmx1TlNoTnErd0QxQXhKVHdIbWwxWXU0M1l2bDd2YWgrTWRDZUIvVGw5SEdaT3N1Q2dhdWNDSFNldEpSNTUwenYKMFdPVXcwR2t2WjE5K28vYlNFdE5tNGNqQ2pMdnlBYlVGUkhRSXhJZjh1N09Mcks4UVZLUGxGampLZko0QS9nWgpnc1IzcHgwbWZSSnY5NGQ4YTJxMHcyYVRIaWZEOE9rREFrckl4d0VVdVFFQ2dZRUE0Vkt5U0ZiaUJ5WExrZmROCjdUTGlFWEVLSy84MVFjRWU1SEc0UG5VSExvWjZOdGRwQjk2UnNYZ1RGQVhZdW9YVjk0NTYxcjJNMXRWQTNpQ1EKM09aN3g3K1RCVXo3bld4VTZRVndUVGk2QzFBanAyZ2w2MEtuOTJTekNXRjJXaWhEVCtSRGM1UXFEd29ydkZJbgovZU9ucGs3aDRVR0F1b0lSMkRhWm1ibXJFa0VDZ1lFQTJZZ00vc05BbXB3SVBLSjZQc2V3c3dPTkhQdlVsZGVtCm8wTlhGZVQxaGxCS3BaZ2JkbEpWbC9wZGpkTFl0MnoyRHVRR2RaSkJ6aHVHSm5BQVZrVnUvMUpSanA4U0Q2TE0KeUw1UDR1b3c1ejF6eTBTR2FVNFRURUhUWmtwMzlwR3BFTWljeFA2UmpLME1IcWIyaCtOdmNVYW1iQ2F1VWlqUApBTGl3OEkwNFFCc0NnWUFxSnJJN1hpV0NlTXVRVHRkQkhGZTJNNU5YajdLQ3pvSGM4bmtwRmZOMS9LbzRRQ3ZoCjBQMG9XZklYdU5CR2RHc0dtSnphTnpOMXJRY3BocVlTN1BzUzd2K3Q2aXpYMGtCQUowaE82ZUhENUFZSGR6QkEKeG9OdGdHVU55REcvdy9CenJad0FyeUwvRlVRQlFzMUFiYW9iTG42TENSbnZ5ZzFVaVVKS3c3VUJBUUtCZ0c5eQpMSFk1UWxmenFLU24rVWxBdFY2QmEwSjJJcXZDR0RWOHdwa00vRjBidGFLeEV5RERmZWFtOWxjNnRwMEN6ZTFECkZhd1dpbkExMmJ6SGxPU2VIZ2ZnL0xlODkxdmJaRjlVWVVrNEFtWDJMZVR0N283MDJSNHdlMFhrMFNFWjd5d1MKRzM4eGpSQXRlQkFjS2lIa2U2dmxMazRxWXhUa28ya1RObE9IaGxJUkFvR0JBTTFDWUcrVTUxMXRSNmdzZDFobgpJWFJDeHhlOVZKWWFMNU4vTUp5OWdIRU9uYVM1aHVXN1FpdDI2SkxWcVFLYVBSdHI3L0RQblU4NkV5RitNdzVZCmwzd085aGlPTDJRcUZVMnQzRnlNeWI2VExMYUJ2OS9NSHJUdm45VWo5VWxoR3NJSFVoUHBzSXhWZG1wa0FRdUoKM1R1QktuaU0vSGFpRkV0QUZJbEEvUkcrCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K</prv>
+		<serial>2</serial>
+	</ca>
+	<installedpackages>
+		<package>
+			<name>Open-VM-Tools</name>
+			<descr><![CDATA[VMware Tools is a suite of utilities that enhances the performance of the virtual machine&#039;s guest operating system and improves management of the virtual machine.]]></descr>
+			<website>http://open-vm-tools.sourceforge.net/</website>
+			<version>10.1.0_5,1</version>
+			<pkginfolink>https://docs.netgate.com/pfsense/en/latest/packages/open-vm-tools.html</pkginfolink>
+			<configurationfile>open-vm-tools.xml</configurationfile>
+			<logging>
+				<logfilename>vmware-vmsvc-root.log</logfilename>
+			</logging>
+			<include_file>/usr/local/pkg/open-vm-tools.inc</include_file>
+		</package>
+		<package>
+			<name>OpenVPN Client Export Utility</name>
+			<internal_name>openvpn-client-export</internal_name>
+			<descr><![CDATA[Allows a pre-configured OpenVPN Windows Client or Mac OS X&#039;s Viscosity configuration bundle to be exported directly from pfSense.]]></descr>
+			<version>1.9.2</version>
+			<configurationfile>openvpn-client-export.xml</configurationfile>
+			<tabs>
+				<tab>
+					<name>Client Export</name>
+					<tabgroup>OpenVPN</tabgroup>
+					<url>/vpn_openvpn_export.php</url>
+				</tab>
+			</tabs>
+			<include_file>/usr/local/pkg/openvpn-client-export.inc</include_file>
+		</package>
+		<package>
+			<name>squid3</name>
+			<internal_name>squid</internal_name>
+			<descr><![CDATA[High performance web proxy cache (3.4 branch). It combines Squid as a proxy server with its capabilities of acting as a HTTP / HTTPS reverse proxy.&lt;br /&gt;
+			It includes an Exchange-Web-Access (OWA) Assistant, SSL filtering and antivirus integration via C-ICAP.]]></descr>
+			<pkginfolink>https://forum.netgate.com/category/52/cache-proxy</pkginfolink>
+			<website>http://www.squid-cache.org/</website>
+			<version>0.4.46</version>
+			<configurationfile>squid.xml</configurationfile>
+			<filter_rule_function>squid_generate_rules</filter_rule_function>
+			<tabs>
+				<tab>
+					<text><![CDATA[General]]></text>
+					<url>/pkg_edit.php?xml=squid.xml&amp;id=0</url>
+					<active></active>
+				</tab>
+				<tab>
+					<text><![CDATA[Remote Cache]]></text>
+					<url>/pkg.php?xml=squid_upstream.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Local Cache]]></text>
+					<url>/pkg_edit.php?xml=squid_cache.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Antivirus]]></text>
+					<url>/pkg_edit.php?xml=squid_antivirus.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[ACLs]]></text>
+					<url>/pkg_edit.php?xml=squid_nac.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Traffic Mgmt]]></text>
+					<url>/pkg_edit.php?xml=squid_traffic.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Authentication]]></text>
+					<url>/pkg_edit.php?xml=squid_auth.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Users]]></text>
+					<url>/pkg.php?xml=squid_users.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Real Time]]></text>
+					<url>/squid_monitor.php</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Status]]></text>
+					<url>/status_squid.php</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Sync]]></text>
+					<url>/pkg_edit.php?xml=squid_sync.xml</url>
+				</tab>
+			</tabs>
+			<include_file>/usr/local/pkg/squid.inc</include_file>
+			<plugins>
+				<item>
+					<type>plugin_carp</type>
+				</item>
+				<item>
+					<type>plugin_certificates</type>
+				</item>
+			</plugins>
+		</package>
+		<package>
+			<name>squidGuard</name>
+			<descr><![CDATA[High performance web proxy URL filter.
+			&lt;br /&gt;
+			&lt;strong&gt;Ensure Squid is installed before installing this package.&lt;/strong&gt;]]></descr>
+			<website>http://www.squidGuard.org/</website>
+			<version>1.16.19</version>
+			<configurationfile>squidguard.xml</configurationfile>
+			<after_install_info>Please visit Services - SquidGuard Proxy Filter - Target Categories and set up at least one category there before enabling SquidGuard. See https://docs.netgate.com/pfsense/en/latest/packages/cache-proxy/squidguard.html for details.</after_install_info>
+			<tabs>
+				<tab>
+					<text><![CDATA[General settings]]></text>
+					<url>/pkg_edit.php?xml=squidguard.xml&amp;id=0</url>
+					<active></active>
+				</tab>
+				<tab>
+					<text><![CDATA[Common ACL]]></text>
+					<url>/pkg_edit.php?xml=squidguard_default.xml&amp;id=0</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Groups ACL]]></text>
+					<url>/pkg.php?xml=squidguard_acl.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Target categories]]></text>
+					<url>/pkg.php?xml=squidguard_dest.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Times]]></text>
+					<url>/pkg.php?xml=squidguard_time.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Rewrites]]></text>
+					<url>/pkg.php?xml=squidguard_rewr.xml</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Blacklist]]></text>
+					<url>/squidGuard/squidguard_blacklist.php</url>
+				</tab>
+				<tab>
+					<text><![CDATA[Log]]></text>
+					<url>/squidGuard/squidguard_log.php</url>
+				</tab>
+				<tab>
+					<text><![CDATA[XMLRPC Sync]]></text>
+					<url>/pkg_edit.php?xml=squidguard_sync.xml</url>
+				</tab>
+			</tabs>
+			<include_file>/usr/local/pkg/squidguard.inc</include_file>
+		</package>
+		<package>
+			<name>pfBlockerNG</name>
+			<descr><![CDATA[Manage IPv4/v6 List Sources into &#039;Deny, Permit or Match&#039; formats.&lt;br /&gt;
+			GeoIP database by MaxMind Inc. (GeoLite2 Free version).&lt;br /&gt;
+			De-Duplication, Suppression, and Reputation enhancements.&lt;br /&gt;
+			Provision to download from diverse List formats.&lt;br /&gt;
+			Advanced Integration for Proofpoint ET IQRisk IP Reputation Threat Sources.&lt;br /&gt;
+			Domain Name (DNSBL) blocking via Unbound DNS Resolver.]]></descr>
+			<pkginfolink>https://docs.netgate.com/pfsense/en/latest/packages/pfblocker.html</pkginfolink>
+			<version>3.2.0_8</version>
+			<configurationfile>pfblockerng.xml</configurationfile>
+			<include_file>/usr/local/pkg/pfblockerng/pfblockerng.inc</include_file>
+		</package>
+		<service>
+			<name>squid</name>
+			<rcfile>squid.sh</rcfile>
+			<executable>squid</executable>
+			<description><![CDATA[Squid Proxy Server Service]]></description>
+		</service>
+		<service>
+			<name>clamd</name>
+			<rcfile>clamd.sh</rcfile>
+			<executable>clamd</executable>
+			<description><![CDATA[ClamAV Antivirus]]></description>
+		</service>
+		<service>
+			<name>c-icap</name>
+			<rcfile>c-icap.sh</rcfile>
+			<executable>c-icap</executable>
+			<description><![CDATA[ICAP Interface for Squid and ClamAV integration]]></description>
+		</service>
+		<service>
+			<name>squidGuard</name>
+			<description><![CDATA[Proxy server filter Service]]></description>
+			<executable>squidGuard</executable>
+			<starts_on_sync></starts_on_sync>
+		</service>
+		<service>
+			<name>vmware-guestd</name>
+			<rcfile>vmware-guestd.sh</rcfile>
+			<custom_php_service_status_command>mwexec(&quot;/usr/local/etc/rc.d/vmware-guestd status&quot;) == 0;</custom_php_service_status_command>
+			<description><![CDATA[VMware Guest Daemon]]></description>
+		</service>
+		<service>
+			<name>vmware-kmod</name>
+			<rcfile>vmware-kmod.sh</rcfile>
+			<custom_php_service_status_command>mwexec(&quot;/usr/local/etc/rc.d/vmware-kmod status&quot;) == 0;</custom_php_service_status_command>
+			<description><![CDATA[VMware Kernel Modules]]></description>
+		</service>
+		<service>
+			<name>pfb_dnsbl</name>
+			<rcfile>pfb_dnsbl.sh</rcfile>
+			<executable>lighttpd_pfb</executable>
+			<description><![CDATA[pfBlockerNG DNSBL service]]></description>
+		</service>
+		<service>
+			<name>pfb_filter</name>
+			<rcfile>pfb_filter.sh</rcfile>
+			<executable>php_pfb</executable>
+			<description><![CDATA[pfBlockerNG firewall filter service]]></description>
+		</service>
+		<vpn_openvpn_export></vpn_openvpn_export>
+		<squidcache>
+			<config>
+				<nocache></nocache>
+				<cache_replacement_policy>heap LFUDA</cache_replacement_policy>
+				<cache_swap_low>90</cache_swap_low>
+				<cache_swap_high>95</cache_swap_high>
+				<donotcache></donotcache>
+				<enable_offline></enable_offline>
+				<ext_cachemanager></ext_cachemanager>
+				<harddisk_cache_size>100</harddisk_cache_size>
+				<harddisk_cache_system>ufs</harddisk_cache_system>
+				<level1_subdirs>16</level1_subdirs>
+				<harddisk_cache_location>/var/squid/cache</harddisk_cache_location>
+				<minimum_object_size>0</minimum_object_size>
+				<maximum_object_size>4</maximum_object_size>
+				<memory_cache_size>64</memory_cache_size>
+				<maximum_objsize_in_mem>256</maximum_objsize_in_mem>
+				<memory_replacement_policy>heap GDSF</memory_replacement_policy>
+				<cache_dynamic_content></cache_dynamic_content>
+				<custom_refresh_patterns></custom_refresh_patterns>
+			</config>
+		</squidcache>
+		<squidremote></squidremote>
+		<squidauth>
+			<config>
+				<auth_method>none</auth_method>
+			</config>
+		</squidauth>
+		<menu>
+			<name>Squid Proxy Server</name>
+			<tooltiptext>Modify the proxy server settings</tooltiptext>
+			<section>Services</section>
+			<url>/pkg_edit.php?xml=squid.xml&amp;id=0</url>
+		</menu>
+		<menu>
+			<name>Squid Reverse Proxy</name>
+			<tooltiptext>Modify the reverse proxy server settings</tooltiptext>
+			<section>Services</section>
+			<url>/pkg_edit.php?xml=squid_reverse_general.xml&amp;id=0</url>
+		</menu>
+		<menu>
+			<name>SquidGuard Proxy Filter</name>
+			<tooltiptext>Modify the proxy server&#039;s filter settings</tooltiptext>
+			<section>Services</section>
+			<url>/pkg_edit.php?xml=squidguard.xml&amp;id=0</url>
+		</menu>
+		<menu>
+			<name>pfBlockerNG</name>
+			<section>Firewall</section>
+			<url>/pfblockerng/pfblockerng_general.php</url>
+		</menu>
+		<squidnac>
+			<config>
+				<allowed_subnets>MTkyLjE2OC4xLjAvMjQNCjEwLjAuMjAyLjAvMjQ=</allowed_subnets>
+				<unrestricted_hosts></unrestricted_hosts>
+				<banned_hosts></banned_hosts>
+				<whitelist></whitelist>
+				<blacklist></blacklist>
+				<block_user_agent></block_user_agent>
+				<block_reply_mime_type></block_reply_mime_type>
+				<addtl_ports></addtl_ports>
+				<addtl_sslports></addtl_sslports>
+				<google_accounts></google_accounts>
+				<youtube_restrict>none</youtube_restrict>
+			</config>
+		</squidnac>
+		<squidguardgeneral>
+			<config>
+				<squidguard_enable>on</squidguard_enable>
+				<ldap_enable></ldap_enable>
+				<ldapbinddn></ldapbinddn>
+				<ldapbindpass></ldapbindpass>
+				<ldapcachetime>0</ldapcachetime>
+				<stripntdomain></stripntdomain>
+				<striprealm></striprealm>
+				<ldapversion>3</ldapversion>
+				<rewrite_children>16</rewrite_children>
+				<rewrite_children_startup>8</rewrite_children_startup>
+				<rewrite_children_idle>4</rewrite_children_idle>
+				<enable_guilog>on</enable_guilog>
+				<enable_log>on</enable_log>
+				<log_rotation>on</log_rotation>
+				<adv_blankimg></adv_blankimg>
+				<blacklist>on</blacklist>
+				<blacklist_proxy></blacklist_proxy>
+				<blacklist_url></blacklist_url>
+			</config>
+		</squidguardgeneral>
+		<squid>
+			<config>
+				<enable_squid>on</enable_squid>
+				<keep_squid_data>on</keep_squid_data>
+				<listenproto>inet</listenproto>
+				<carpstatusvid>none</carpstatusvid>
+				<active_interface>lan</active_interface>
+				<outgoing_interface>auto</outgoing_interface>
+				<proxy_port>3128</proxy_port>
+				<icp_port></icp_port>
+				<allow_interface>on</allow_interface>
+				<dns_v4_first></dns_v4_first>
+				<disable_pinger></disable_pinger>
+				<dns_nameservers></dns_nameservers>
+				<extraca>none</extraca>
+				<transparent_proxy></transparent_proxy>
+				<transparent_active_interface>lan</transparent_active_interface>
+				<private_subnet_proxy_off></private_subnet_proxy_off>
+				<defined_ip_proxy_off></defined_ip_proxy_off>
+				<defined_ip_proxy_off_dest></defined_ip_proxy_off_dest>
+				<ssl_proxy></ssl_proxy>
+				<sslproxy_mitm_mode>splicewhitelist</sslproxy_mitm_mode>
+				<ssl_active_interface>lan</ssl_active_interface>
+				<ssl_proxy_port></ssl_proxy_port>
+				<sslproxy_compatibility_mode>modern</sslproxy_compatibility_mode>
+				<dhparams_size>2048</dhparams_size>
+				<dca>none</dca>
+				<sslcrtd_children></sslcrtd_children>
+				<interception_checks></interception_checks>
+				<interception_adapt></interception_adapt>
+				<log_enabled></log_enabled>
+				<log_dir>/var/squid/logs</log_dir>
+				<log_rotate></log_rotate>
+				<log_sqd></log_sqd>
+				<visible_hostname>localhost</visible_hostname>
+				<admin_email>admin@localhost</admin_email>
+				<error_language>en</error_language>
+				<xforward_mode>on</xforward_mode>
+				<disable_via></disable_via>
+				<uri_whitespace>strip</uri_whitespace>
+				<disable_squidversion></disable_squidversion>
+				<custom_options>url_rewrite_program /usr/local/bin/squidGuard -c /usr/local/etc/squidGuard/squidGuard.conf;url_rewrite_bypass off;url_rewrite_children 16 startup=8 idle=4 concurrency=0</custom_options>
+				<custom_options_squid3></custom_options_squid3>
+				<custom_options2_squid3></custom_options2_squid3>
+				<custom_options3_squid3></custom_options3_squid3>
+			</config>
+		</squid>
+		<squidguarddest>
+			<config>
+				<name>WSUS_BLOCK</name>
+				<domains>windowsupdate.microsoft.com update.microsoft.com windowsupdate.com download.windowsupdate.com download.microsoft.com wustat.windows.com ntservicepack.microsoft.com ws.microsoft.com</domains>
+				<urls></urls>
+				<expressions>\.exe(\?.*)?$\.avi(\?.*)?$\.bat(\?.*)?$\.tar(\?.*)?$\.mpg(\?.*)?$\.mp3(\?.*)?$\.mp4(\?.*)?$\.msi(\?.*)?$\.cab(\?.*)?$</expressions>
+				<redirect_mode>rmod_none</redirect_mode>
+				<redirect></redirect>
+				<description></description>
+				<enablelog>on</enablelog>
+			</config>
+		</squidguarddest>
+		<squidguarddefault>
+			<config>
+				<dest>!WSUS_BLOCK !blk_BL_adv !blk_BL_automobile_bikes !blk_BL_automobile_boats !blk_BL_automobile_cars !blk_BL_automobile_planes !blk_BL_dating !blk_BL_drugs !blk_BL_fortunetelling !blk_BL_gamble !blk_BL_hacking !blk_BL_hobby_games-misc !blk_BL_hobby_games-online !blk_BL_hobby_gardening !blk_BL_military !blk_BL_models !blk_BL_movies !blk_BL_porn !blk_BL_radiotv !blk_BL_religion !blk_BL_shopping !blk_BL_violence !blk_BL_weapons !blk_BL_webtv all</dest>
+				<notallowingip></notallowingip>
+				<deniedmessage></deniedmessage>
+				<redirect_mode>rmod_int</redirect_mode>
+				<redirect></redirect>
+				<safesearch></safesearch>
+				<rewrite></rewrite>
+				<enablelog>on</enablelog>
+			</config>
+		</squidguarddefault>
+		<squidguardacl></squidguardacl>
+		<pfblockerng>
+			<config>
+				<enable_cb></enable_cb>
+				<pfb_keep>on</pfb_keep>
+				<pfb_reuse></pfb_reuse>
+				<pfb_interval>1</pfb_interval>
+				<pfb_min>0</pfb_min>
+				<pfb_hour>0</pfb_hour>
+				<pfb_dailystart>0</pfb_dailystart>
+				<skipfeed>0</skipfeed>
+				<log_max_log>20000</log_max_log>
+				<log_max_errlog>20000</log_max_errlog>
+				<log_max_extraslog>20000</log_max_extraslog>
+				<log_max_ip_blocklog>20000</log_max_ip_blocklog>
+				<log_max_ip_permitlog>20000</log_max_ip_permitlog>
+				<log_max_ip_matchlog>20000</log_max_ip_matchlog>
+				<log_max_dnslog>20000</log_max_dnslog>
+				<log_max_dnsbl_parse_err>20000</log_max_dnsbl_parse_err>
+				<log_max_dnsreplylog>20000</log_max_dnsreplylog>
+				<log_max_unilog>20000</log_max_unilog>
+			</config>
+		</pfblockerng>
+		<pfblockerngipsettings>
+			<config>
+				<enable_dup>on</enable_dup>
+				<suppression>on</suppression>
+				<inbound_interface>opt1</inbound_interface>
+				<inbound_deny_action>block</inbound_deny_action>
+				<outbound_interface>lan</outbound_interface>
+				<outbound_deny_action>reject</outbound_deny_action>
+				<pass_order>order_0</pass_order>
+			</config>
+		</pfblockerngipsettings>
+		<pfblockerngdnsblsettings>
+			<config>
+				<pfb_dnsvip>10.10.11.1</pfb_dnsvip>
+				<pfb_dnsport>8081</pfb_dnsport>
+				<pfb_dnsport_ssl>8443</pfb_dnsport_ssl>
+				<pfb_dnsblv6></pfb_dnsblv6>
+				<pfb_dnsbl>on</pfb_dnsbl>
+				<suppression>czMuYW1hem9uYXdzLmNvbQ0KczMtMS5hbWF6b25hd3MuY29tICMgQ05BTUUgZm9yIChzMy5hbWF6
+b25hd3MuY29tKQ0KLmdpdGh1Yi5jb20NCi5naXRodWJ1c2VyY29udGVudC5jb20gDQpnaXRodWIu
+bWFwLmZhc3RseS5uZXQgIyBDTkFNRSBmb3IgKHJhdy5naXRodWJ1c2VyY29udGVudC5jb20pDQou
+Z2l0bGFiLmNvbQ0KLnNvdXJjZWZvcmdlLm5ldA0KLmZscy1uYS5hbWF6b24uY29tICMgYWxleGEN
+Ci5jb250cm9sLmtvY2hhdmEuY29tICMgYWxleGEgMg0KLmRldmljZS1tZXRyaWNzLXVzLTIuYW1h
+em9uLmNvbSAjIGFsZXhhIDMNCi5hbWF6b24tYWRzeXN0ZW0uY29tICMgYW1hem9uIGFwcCBhZHMN
+Ci5weC5tb2F0YWRzLmNvbSAjIGFtYXpvbiBhcHAgMg0KLndpbGRjYXJkLm1vYXRhZHMuY29tLmVk
+Z2VrZXkubmV0ICMgQ05BTUUgZm9yIChweC5tb2F0YWRzLmNvbSkNCi5lMTMxMzYuZy5ha2FtYWll
+ZGdlLm5ldCAjIENOQU1FIGZvciAocHgubW9hdGFkcy5jb20pDQouc2VjdXJlLWdsLmltcndvcmxk
+d2lkZS5jb20gIyBhbWF6b24gYXBwIDMNCi5waXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tICMgYW1h
+em9uIGFwcCA0DQouYW55Y2FzdC5waXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tICMgQ05BTUUgZm9y
+IChwaXhlbC5hZHNhZmVwcm90ZWN0ZWQuY29tKQ0KLmJzLnNlcnZpbmctc3lzLmNvbSAjIGFtYXpv
+biBhcHAgNQ0KLmJzLmV5ZWJsYXN0ZXIuYWthZG5zLm5ldCAjIENOQU1FIGZvciAoYnMuc2Vydmlu
+Zy1zeXMuY29tKQ0KLmJzbGEuZXllYmxhc3Rlci5ha2FkbnMubmV0ICMgQ05BTUUgZm9yIChicy5z
+ZXJ2aW5nLXN5cy5jb20pDQouYWRzYWZlcHJvdGVjdGVkLmNvbSAjIGFtYXpvbiBhcHAgNg0KLmFu
+eWNhc3Quc3RhdGljLmFkc2FmZXByb3RlY3RlZC5jb20gIyBDTkFNRSBmb3IgKHN0YXRpYy5hZHNh
+ZmVwcm90ZWN0ZWQuY29tKQ0KZ29vZ2xlLmNvbQ0Kd3d3Lmdvb2dsZS5jb20NCnlvdXR1YmUuY29t
+DQp3d3cueW91dHViZS5jb20NCnlvdXR1YmUtdWkubC5nb29nbGUuY29tICMgQ05BTUUgZm9yICh5
+b3V0dWJlLmNvbSkNCnN0YWNrb3ZlcmZsb3cuY29tDQp3d3cuc3RhY2tvdmVyZmxvdy5jb20NCmRy
+b3Bib3guY29tDQp3d3cuZHJvcGJveC5jb20NCnd3dy5kcm9wYm94LWRucy5jb20gIyBDTkFNRSBm
+b3IgKGRyb3Bib3guY29tKQ0KLmFkc2FmZXByb3RlY3RlZC5jb20NCmNvbnRyb2wua29jaGF2YS5j
+b20NCnNlY3VyZS1nbC5pbXJ3b3JsZHdpZGUuY29tDQpwYnMudHdpbWcuY29tICMgdHdpdHRlciBp
+bWFnZXMNCnd3dy5wYnMudHdpbWcuY29tICMgdHdpdHRlciBpbWFnZXMNCmNzMTk2LndhYy5lZGdl
+Y2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczItd2FjLmFwci04MzE1
+LmVkZ2VjYXN0ZG5zLm5ldCAjIENOQU1FIGZvciAocGJzLnR3aW1nLmNvbSkNCmNzMi13YWMtdXMu
+ODMxNS5lY2Rucy5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczQ1LndhYy5lZGdl
+Y2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczItd2FjLmFwci04MzE1
+LmVkZ2VjYXN0ZG5zLm5ldCAjIENOQU1FIGZvciAocGJzLnR3aW1nLmNvbSkNCmNzMi13YWMtdXMu
+ODMxNS5lY2Rucy5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQpjczQ1LndhYy5lZGdl
+Y2FzdGNkbi5uZXQgIyBDTkFNRSBmb3IgKHBicy50d2ltZy5jb20pDQoucGZzZW5zZS5vcmcNCi5u
+ZXRnYXRlLmNvbQ0K</suppression>
+			</config>
+		</pfblockerngdnsblsettings>
+		<pfblockerngdnsbl>
+			<config>
+				<aliasname>ADs_Basic</aliasname>
+				<description><![CDATA[ADs Basic - Collection of ADvertisement Domain Feeds.]]></description>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts</url>
+					<header>StevenBlack_ADs</header>
+				</row>
+				<action>unbound</action>
+				<cron>EveryDay</cron>
+				<logging>enabled</logging>
+				<order>default</order>
+				<dow>1</dow>
+			</config>
+		</pfblockerngdnsbl>
+		<pfblockernglistsv4>
+			<config>
+				<aliasname>PRI1</aliasname>
+				<description><![CDATA[PRI1 - Collection of Feeds from the most reputable blocklist providers. (Primary tier)]]></description>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.txt</url>
+					<header>Abuse_Feodo_C2</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://sslbl.abuse.ch/blacklist/sslipblacklist.txt</url>
+					<header>Abuse_SSLBL</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://cinsarmy.com/list/ci-badguys.txt</url>
+					<header>CINS_army</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt</url>
+					<header>ET_Block</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://rules.emergingthreats.net/blockrules/compromised-ips.txt</url>
+					<header>ET_Comp</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://isc.sans.edu/block.txt</url>
+					<header>ISC_Block</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://www.spamhaus.org/drop/drop.txt</url>
+					<header>Spamhaus_Drop</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://www.spamhaus.org/drop/edrop.txt</url>
+					<header>Spamhaus_eDrop</header>
+				</row>
+				<row>
+					<format>auto</format>
+					<state><![CDATA[Enabled]]></state>
+					<url>https://talosintelligence.com/documents/ip-blacklist</url>
+					<header>Talos_BL</header>
+				</row>
+				<action>Deny_Outbound</action>
+				<cron>01hour</cron>
+				<aliaslog>enabled</aliaslog>
+				<dow>1</dow>
+			</config>
+		</pfblockernglistsv4>
+		<pfblockerngblacklist></pfblockerngblacklist>
+		<pfblockerngglobal></pfblockerngglobal>
+		<pfblockerngsafesearch></pfblockerngsafesearch>
+	</installedpackages>
+	<virtualip></virtualip>
+</pfsense>
